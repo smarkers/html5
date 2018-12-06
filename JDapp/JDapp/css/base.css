@@ -1,0 +1,25 @@
+*,::before,::after{
+	/*高亮效果*/
+	-webkit-tap-heighlight-color:transparent;  /* 设置透明色	 */
+	-webkit-box-sizing:border-box;   /*设置怪异盒模型   从border开始计算宽度*/
+}
+body{
+	font-size:14px;
+	margin:0;
+	font-family:'Microsoft YaHei',sans-serif;   /*sans-serif:手机默认字体*/
+	color:#000;
+}
+ol,ul,li{list-style:none;margin:0;padding:0;}
+p,h1,h2,h3,h4,h5,h6{margin:0;}
+a{text-decoration:none}
+input,textarea{border:0;outline:none;resize:none}
+.clear:after{
+	content:'';
+	/*
+	content:'.';
+	height:0;
+	visibility:hidden;
+	*/
+	display:block;
+	clear:both;
+}

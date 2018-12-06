@@ -1,0 +1,380 @@
+body{background:#f5f5f5;}
+.layout{
+	max-width:640px;
+	min-width:300px;
+	margin:0 auto;
+	/* background:pink; */
+}
+.head_fixed{
+	width:100%;
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:1000;
+}
+.head_fixed .top_center{
+	max-width:640px;
+	min-width:300px;
+	margin:0 auto;
+	height:40px;
+	position:relative;
+	background:rgba(201,21,35,0);
+}
+.head_fixed .top_center #logo{
+	width:60px;
+	height:36px;
+	background:url('../images/sprites.png') no-repeat 0 -103px;
+	background-size:200px 200px;
+	position:absolute;
+	top:4px;
+	left:10px;
+}
+/*搜索框*/
+.head_fixed .top_center #form{
+	width:100%;
+	height:40px;
+	padding:0 55px 0 75px;
+	position:relative;
+}
+.icon_search{
+	width:20px;
+	height:20px;
+	background:url('../images/sprites.png') no-repeat -60px -109px;
+	background-size:200px 200px;
+	position:absolute;
+	top:10px;
+	left:85px;
+}
+.head_fixed .top_center #form input{
+	width:100%;
+	height:30px;
+	border-radius:15px;
+	margin-top:5px;
+	padding-left:30px;
+}
+.head_fixed .top_center .login{
+	width:50px;
+	height:40px;
+	color:#fff;
+	line-height:40px;
+	text-align:center;
+	position:absolute;
+	right:0;
+	top:0;
+}
+/*banner*/
+.banner_box{
+	width:100%;
+	position:relative;
+	z-index:999;
+	overflow:hidden;
+}
+.banner_box ul{
+	width:1000%;
+	/* height:310px; */
+	transform:translateX(-10%);
+}
+.banner_box ul li{
+	width:10%;
+	float:left;
+}
+.banner_box ul li img{
+	width:100%;
+	display:block;
+}
+.banner_box ol{
+	width:128px;
+	height:6px;
+	position:absolute;
+	left:50%;
+	margin-left:-59px;
+	bottom:5px;
+}
+.banner_box ol li{
+	width:6px;
+	height:6px;
+	float:left;
+	border:1px solid #fff;
+	margin-right:10px;
+	border-radius:50%;
+}
+.banner_box ol li:last-child{
+	margin-right:0;
+}
+.banner_box ol .act{
+	background:#fff;
+}
+/*nav导航*/
+.nav{
+	width:100%;
+	height:150px;
+	background:#fff;
+	padding-top:10px;
+	border-bottom:1px solid #ccc;
+}
+.nav .list_nav{
+	width:100%;
+}
+.nav .list_nav li{
+	width:25%;
+	height:70px;
+	float:left;
+}
+.nav .list_nav li a{
+	width:100%;
+	display:block;
+	text-align:center;
+}
+.nav .list_nav li a img{
+	width:40px;
+	height:40px
+	display:block;
+	margin:0 auto;
+} 
+.nav .list_nav li a p{
+	width:100%;
+	font-size:12px;
+	color:#666666;
+	line-height:20px;
+}
+/*商品秒杀*/
+.secondKill{
+	margin:8px 5px;
+	background:#fff;
+	border:1px solid #ccc;
+}
+.sk_box{
+	width:100%;
+	margin-top:7px;/* 
+	background:skyblue; */
+}
+.sk_box .title_top{
+	width:100%;
+	height:32px;
+}
+.sk_box .title_top .title_left{
+	float:left;
+	padding:6px 0 0 0;
+}
+.sk_box .title_top .title_left .sk_icon{
+	width:20px;
+	height:20px;
+	background:url('../images/seckill-icon.png') no-repeat 0 0;
+	background-size:20px 20px;
+	float:left;
+	margin:0 8px;
+}
+.sk_box .title_top .title_left h2{
+	float:left;
+	font-weight:normal;
+	color:#d8505c;
+	font-size:13px;
+	margin-right:10px;
+}
+.sk_box .title_top .title_left .sk_time{
+	float:left;
+	margin-top:2px;
+	margin-left:3px;
+}
+.sk_box .title_top .title_left .sk_time .num{
+	float:left;
+	width:15px;
+	height:15px;
+	background:#333333;
+	text-align:center;
+	line-height:15px;
+	margin-right:3px;
+	color:#fff;
+	font-size:11px;
+}
+.sk_box .title_top .title_left .sk_time .point{
+	float:left;
+	width:5px;
+	height:15px;
+	text-align:center;
+	line-height:15px;
+	margin-right:3px;
+}
+.sk_box .title_top .title_right{
+	float:right;
+}
+.sk_box .title_top .title_right a{
+	color:#000000;
+	margin-right:12px;
+	line-height:32px;
+}
+.list_kill{
+	width:100%;
+}
+.list_kill li{
+	width:33.333%;
+	float:left;
+}
+.list_kill li a{
+	width:100%;
+	display:block;
+}
+.list_kill li a div{
+	width:100%;
+	/* height:134px; */
+	padding:0 15%;
+	border-right:1px solid #e0e0e0;
+}
+.list_kill li:last-child a div{
+	border:0;
+}
+.list_kill li a div img{
+	width:64%;
+	margin:0 auto;
+	display:block;
+	/* height:134px; */
+}
+.list_kill li a p{
+	width:100%;
+	text-align:center;
+	font-size:10px;
+	color:#d8505c;
+}
+.list_kill li a strong{
+	width:100%;
+	display:block;
+	text-align:center;
+	font-size:12px;
+	color:#888888;
+	text-decoration:line-through;
+}
+
+/* 活动专区 */
+.jd_product1,.jd_product2{
+	width:100%;
+	border:1px solid #ccc;
+	margin-bottom:10px;
+
+}
+.product .product_title{
+	width:100%;
+	height:32px;
+	background:#fff;
+}
+.product .product_title:before{
+	width:3px;
+	height:13px;
+	content:"";
+	display:block;
+	background:#d8505c;
+	float:left;
+	margin-top:10px;
+	margin-left:8px;
+	margin-right:4px;
+}
+.product .product_title h3{
+	width:100%;
+	height:32px;
+	font-size:13px;
+	line-height:32px;
+	margin-left:3px;
+	color:#333;
+}
+.pic_box{
+	width:100%;
+}
+.p_left{
+	width:50%;
+	float:left;
+}
+.p_right_top{
+	width:50%;
+	float:right;
+}
+.p_right_bottom{
+	width:50%;
+	float:right;
+}
+.pic_box img{
+	width:100%;
+	display:block;
+}
+.bor_right{
+	border-right:1px solid #ccc;
+}
+.bor_bottom{
+	border-bottom:1px solid #ccc;
+}
+/*bottom*/
+.bottom_fixed{
+	width:100%;
+	position:fixed;
+	bottom:0;
+	left:0;
+	background:#fff;
+	box-shadow:0 -2px 5px 0 rgba(0,0,0,.3);
+}
+.bottom_fixed ul li{
+	float:left;
+	width:20%;
+	text-align:center;
+}
+.bottom_fixed ul li a{
+	display:block;
+}
+.bottom_fixed ul li img{
+	width:3.6em;
+	display:block;
+	margin:0 auto;
+	vertical-align:bottom
+}
+/*商品详情生成页面*/
+.commsdity{
+	width:100%;
+}
+.commsdity .commsdity_ul{
+	width:100%;
+}
+.commsdity .commsdity_ul li{
+	float:left;
+	width:49%;
+	background:#fff;
+	margin-bottom:10px;
+	border:1px solid #ccc;
+}
+.commsdity .commsdity_ul li:nth-child(odd){
+	margin-right:2%;
+}
+.commsdity .commsdity_ul li .s{
+	width:100%;
+	display:block;
+}
+.commsdity .commsdity_ul li .s img{
+	width:100%;
+	display:block;
+}
+.commsdity .commsdity_ul li .commo_name{
+	width:100%;
+	padding-left:10px;
+	padding-right:10px;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	overflow:hidden;
+	padding:5px 10px;
+}
+.commsdity .commsdity_ul li .commo_price{
+	width:100%;
+	color:red;
+	padding:0 10px 5px;
+}
+.commsdity .commsdity_ul li .commo_p{
+	width:100%;
+	padding-left:10px;
+	padding-right:10px;
+	padding:0 10px 5px;
+}
+.commsdity .commsdity_ul li .commo_p .p{
+	float:left;
+}
+.commsdity .commsdity_ul li .commo_p .si{
+	width:0;
+	border:1px solid #ccc;
+	padding:3px;
+	font-size:10px;
+	float:right;
+}

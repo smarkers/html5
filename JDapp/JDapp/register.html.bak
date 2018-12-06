@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name='viewport' content='width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0'/>
+  <title>注册</title>
+  <link rel='stylesheet' href='css/base.css'>
+  <link rel='stylesheet' href='css/register.css'>
+  <script src='js/smart.js'></script>
+  <script>
+		window.onload=function(){
+			var form=document.querySelector('#form');
+			var mes=document.querySelector('.mes');
+			form.inp.onblur=function(){
+				ajax('get','guestbook/index.php','m=index&a=verifyUserName&username='+this.value,function(p){
+					var data=JSON.parse(p);
+					if(!data.code){
+						mes.innerHTML=data.message;
+						mes.style.color='green';
+					}else{
+						mes.innerHTML=data.message;
+					}
+				})
+			}
+			form.btn.addEventListener('touchstart',function(){
+				ajax('get','guestbook/index.php','m=index&a=reg&username='+form.inp.value+'&password='+form.pass.value,function(p){
+					var data=JSON.parse(p);
+					if(form.pass.value!=''){
+						if(!data.code){
+							setTimeout(function(){
+								window.location.href='debark.html';
+							},1000);
+						}else{
+							alert(data.message);
+						}
+					}
+				})},'false')
+			}
+  </script>
+ </head>
+ <body>
+		<header class='head'>
+			<div class='header_center'>
+				<a href='index.html'></a>
+				<p>京东注册</p>
+			</div>
+		</header>
+		<!--注册-->
+		<div class='reg_box'>
+			<form id='form'>
+				<div>
+					<label for='inp'>注册账号:</label>
+					<input type='text' placeholder='用户名/邮箱' id='inp' name='inp'>
+				</div>
+				<p class='mes'></p>
+				<div>
+					<label for='pass'>设置密码:</label>
+					<input type='password' placeholder='请输入密码' id='pass' name='pass'>
+				</div>
+				<div>
+					<input type='button' name='btn' value='注册'>
+				</div>
+			</form>
+		</div>
+ </body>
+</html>

@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name='viewport' content='width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0'/>
+  <link rel='stylesheet' href='css/base.css'/>
+  <link rel='stylesheet' href='css/cart.css'/>
+  <style>
+		.remove .icon_del1{
+			display:block;
+			width:20px;
+			height:5px;
+			background:url('images/delete_up.png') no-repeat 0 0;
+			background-size:20px 5px;
+		}
+		.remove .icon_del2{
+			display:block;
+			width:20px;
+			height:15px;
+			background:url('images/delete_down.png') no-repeat 0 0;
+			background-size:20px 15px;
+		}
+		.shop_product ul li{
+			height:100px;
+			border-bottom:1px solid #e0e0e0;
+		}
+  </style>
+  <script src='js/smart.js'></script>
+  
+  <script>
+		window.onload=function(){
+			var oUl=document.querySelector('.shop_product ul');
+			ajax('get','jsonData/product.json','',function(a){
+				var data=JSON.parse(a);
+				console.log(data);
+				for (var attr in data)
+				{
+					var listArr=data[attr]['list'];
+					for (var i=0;i<listArr.length ;i++ )
+					{
+						var what=window.localStorage.getItem('name'+listArr[i]['pid']);
+						console.log(what);
+						if(listArr[i]['pid']==what){
+							oUl.innerHTML+="<li><div class='shop_check'><span class='shop_check_box'></span></div><div class='shop_info clear'><a class='shop_pic'><img src="+listArr[i]['img']+"></a><div class='info_right'><p class='info_text'><a>"+listArr[i]['dic']+"</a></p><p class='info_price'>￥"+listArr[i]['price']+"</p><div class='num_box'><p class='changeNum'><span>-</span><input type='tel' value='"+window.localStorage.getItem('name'+listArr[i]['pid']+'num')+"'><span>+</span></p><div class='remove'><span class='icon_del1'></span><span class='icon_del2'></span></div></div></div></div></li>";
+						}
+					}
+				}
+				
+
+				//选择
+				var checkBtn=document.querySelectorAll(".shop_check_box");
+				var lisCheckBtn=document.querySelectorAll("ul li .shop_check_box");
+				
+				var price=document.querySelectorAll(".info_price");
+				var count=document.querySelectorAll(".num_box input");
+				var allCheak=document.querySelector(".jd_check_box");
+				var allMoney=document.querySelector(".amount span");
+				var allMoney_dec=document.querySelector(".amount_dec span");
+				var allPay=0;
+				console.log(price);
+				console.log(count);
+
+				for (var i=0;i<lisCheckBtn.length ;i++ )
+				{
+					lisCheckBtn[i].index=i;
+					lisCheckBtn[i].ontouchstart=function(){
+						var isCheck=this.getAttribute("checked");
+						console.log(isCheck);
+						if(isCheck!==null){
+							this.removeAttribute("checked");
+							isCheckAll();
+							remMoney(this.index);
+						}else{
+							this.setAttribute("checked","");
+							isCheckAll();
+							getMoney(this.index);
+						}
+						
+					}
+				}
+
+				allCheak.onclick=function(){
+					var isCheck=this.getAttribute("checked");
+						console.log(isCheck);
+						if(isCheck!==null){
+							this.removeAttribute("checked");
+
+							for (var i=0;i<lisCheckBtn.length ;i++ )
+							{	
+								lisCheckBtn[i].removeAttribute("checked");
+								remMoney(i);
+							}
+						}else{
+							this.setAttribute("checked","");
+
+							for (var i=0;i<lisCheckBtn.length ;i++ )
+							{	
+								lisCheckBtn[i].setAttribute("checked",'');
+								getMoney(i);
+							}
+							
+						}
+				}
+
+				function isCheckAll(){
+					var lisCheck=document.querySelectorAll("ul li .shop_check_box[checked]");
+					if(lisCheckBtn.length==lisCheck.length){
+						allCheck.setAttribute("checked",'');
+					}else{
+						allCheck.removeAttribute("checked");
+					}
+					
+				}
+
+				function getMoney(a){
+					console.log(price[a].innerHTML.substring(1));
+					var pay=price[a].innerHTML.substring(1)*count[a].value;
+					console.log(pay);
+					allPay+=pay;
+					console.log(allPay);
+					allMoney.innerHTML=allPay;
+					allMoney_dec.innerHTML=allPay;
+				}
+
+				function remMoney(a){
+					console.log(price[a].innerHTML.substring(1));
+					var pay=price[a].innerHTML.substring(1)*count[a].value;
+					
+					allPay-=pay;
+					allMoney.innerHTML=allPay;
+					allMoney_dec.innerHTML=allPay;
+				}
+
+
+			})
+		}
+  </script>
+  <title>cart</title>
+ </head>
+ <body>
+		<header class='jd_top'>
+			<a href='index.html' class='icon_back'></a>
+			<h2>购物车</h2>
+			<a href='#' class='icon_menu'></a>
+		</header>
+		<!--商品内容-->
+		<div class='jd_view'>
+			<!-- 提示信息 -->
+			<div class='jd_safe'>
+				<p>您正在安全购物环境中,请放心购物</p>
+			</div>
+			<div class='jd_shop'>
+				<div class='shop_name'>
+					<div class='shop_check'>
+						<span class='shop_check_box'></span>
+					</div>
+					<div class='shop_title'>
+						<img src='./images/buy-logo.png' alt='' class='buy_logo'/>
+						<span class='name'>京东自营</span>
+						<span class='discounts'>您享受满79元免邮费服务</span>
+					</div>
+				</div>
+				<!--商品详情-->
+				<div class='shop_product'>
+					<ul></ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="jd_option">
+        <!--商品选着框区块-->
+        <div class="option_check">
+            <span class="jd_check_box" ></span>
+            <span class="jd_check_label">全选</span>
+        </div>
+        <div class="option_info">
+            <p class="amount">合计:<span>¥15663.00</span></p>
+            <p class="amount_dec">总额:<span>¥15663.00</span>返现:<span>¥0.00</span></p>
+        </div>
+        <div class="option_submit">
+            <a href="#">去结算(<span>4</span>)</a>
+        </div>
+    </div>
+ </body>
+</html>

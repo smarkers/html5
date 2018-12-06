@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name='viewport' content='width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0'/>
+  <title>登陆</title>
+  <link rel='stylesheet' href='css/base.css'>
+  <link rel='stylesheet' href='css/debark.css'>
+  <style>
+		.reg_box div:nth-of-type(3){
+			margin-top:20px;
+		}
+		.reg_box p{
+			margin-top:20px;
+		}
+  </style>
+  <script src='js/smart.js'></script>
+  <script>
+		window.onload=function(){
+			var form=document.querySelector('#form');
+			form.btn.ontouchstart=function(){
+				ajax('get','guestbook/index.php','m=index&a=login&username='+form.inp.value+'&password='+form.pass.value,function(p){
+					var data=JSON.parse(p);
+					setCookie('name',form.inp.value);
+					if(form.pass.value!=''){
+						if(!data.code){
+							window.location.href='index.html';
+						}
+					}
+				})
+			}
+			/*form.back.ontouchstart=function(){
+				ajax('get','guestbook/index.php','m=index&a=logout',function(p){
+					var data=JSON.parse(p);
+					removeCookie('name');
+					if(form.pass.value!=''){
+						if(!data.code){
+							alert(data.message);
+							window.location.href='register.html';
+						}else{
+							alert(data.message);
+						}
+					}
+				})
+			}*/
+		}
+  </script>
+ </head>
+ <body>
+		<header class='head'>
+			<div class='header_center'>
+				<a href='register.html'></a>
+				<p>京东登陆</p>
+			</div>
+		</header>
+		<!--注册-->
+		<div class='reg_box'>
+			<form id='form'>
+				<div class='one'>
+					<label for='inp'>账号:</label>
+					<input type='text' placeholder='用户名/邮箱' id='inp' name='inp'>
+				</div>
+				<div class='one'>
+					<label for='pass'>密码:</label>
+					<input type='password' placeholder='请输入密码' id='pass' name='pass'>
+				</div>
+				<div class='one'>
+					<input type='button' name='btn' value='登陆'>
+				</div>
+			</form>
+			<div class='debark_box'>
+				<div>
+					<span></span>
+					<a>忘记密码</a>
+				</div>
+				<div>
+					<span></span>
+					<a>手机快速注册</a>
+				</div>
+			</div>
+			<div class='debark_box1'>
+				<div></div>
+				<span>其他登陆方式</span>
+			</div>
+			<div class='debark_box2'>
+				<span></span>
+			</div>
+			<p class='debark_p'>登陆即代表您已同意<a href='#'>京东隐私政策</a></p>
+		</div>
+ </body>
+</html>

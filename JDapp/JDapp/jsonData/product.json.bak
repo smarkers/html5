@@ -1,0 +1,74 @@
+{
+	"f101":{
+		"title":"小米商城",
+		"list":[
+		{
+			"pid":"mi001",
+			"name":"小米6",
+			"color":"黑色",
+			"price":"2999",
+			"img":"product/MI6.jpg",
+			"dic":"变焦双摄,4轴防抖/骁龙835 旗舰处理器,6GB 大内存，最大可选128GB闪存/5.15'护眼屏/四曲面玻璃/陶瓷机身"
+		},
+		{
+			"pid":"mi002",
+			"name":"小米note3",
+			"price":"2599",
+			"color":"蓝色",
+			"img":"product/MINote3.jpg",
+			"dic":"支持人脸解锁/1600万美颜自拍 / 2倍变焦双摄，四轴光学防抖/5.5'护眼屏 / 超轻四曲面，7系铝金属边框/6GB大内存,骁龙八核处理器"
+		},
+		{
+			"pid":"mi003",
+			"name":"小米MIX2",
+			"price":"3299",
+			"color":"黑色",
+			"img":"product/MIMIX2.jpg",
+			"dic":"全面屏2.0，5.99'大屏/骁龙835旗舰处理器/ 4轴光学防抖/6模43频,全球频段/双ADC高清录音"
+		},
+		{
+			"pid":"mi004",
+			"name":"小米5X",
+			"price":"1499",
+			"color":"金色",
+			"img":"product/MI5X.jpg",
+			"dic":"光学变焦双摄,拍人更美/5.5'大屏轻薄全金属/ 骁龙八核处理器/4GB大内存"
+		}
+	]},
+	"f102":{
+		"title":"oppo商城",
+		"list":[
+		{
+			"pid":"oppo001",
+			"name":"oppo R11",
+			"price":"2999",
+			"color":"红色",
+			"img":"product/oppoR11.png",
+			"dic":"R11 热力红 旗舰爆款,前后2000W，拍照更清晰"
+		},
+		{
+			"pid":"oppo004",
+			"name":"oppo A57",
+			"price":"1399",
+			"color":"金色",
+			"img":"product/oppoa57.png",
+			"dic":"前置1600万像素，正面指纹识别，3GB运存+32GB内存，2900mAh大电池"
+		},
+		{
+			"pid":"oppo003",
+			"name":"oppo A59s",
+			"price":"1799",
+			"color":"金色",
+			"img":"product/oppoA59s.png",
+			"dic":"5.5英寸，4G运存+32GB内存，前置1600万像素，正面指纹识别，3075mAh大电池"
+		},
+		{
+			"pid":"oppo002",
+			"name":"oppo R11 Plus",
+			"price":"3699",
+			"color":"红色",
+			"img":"product/oppoR11 Plus.png",
+			"dic":"明星旗舰产品，后置双摄，6英寸大屏"
+		}
+	]}
+}

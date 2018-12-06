@@ -1,0 +1,244 @@
+window.onload=function(){
+	topCenter();   //吸顶
+	time();   //倒计时
+	banner();   //轮播图
+	debark();
+}
+	var topCenter=function(){
+			var topCenter=document.querySelector('.top_center');
+			var banner=document.querySelector('.banner_box');
+			var barHeight=banner.offsetHeight;
+			window.onscroll=function(){
+				var top=document.documentElement.scrollTop||document.body.scrollTop;
+					var op=top/barHeight*0.85;
+				if(top>barHeight){
+					topCenter.style.background='rgba(201,21,35,0.85)';
+				}else{
+					topCenter.style.background='rgba(201,21,35,'+op+')';
+				}
+			}
+	}
+
+
+	var banner=function(){
+		var oUl=document.querySelector(".list_ul");
+		var oL=document.querySelector(".banner_box ol");
+		var aLi=oUl.querySelectorAll("li");
+		var arrLi=oL.querySelectorAll("li");
+		var oneSize=aLi[0].offsetWidth;
+		var index=1;
+			//oUl.style.left=-oneSize+"px";
+			//添加过渡的效果
+			var addTransition=function(){
+				oUl.style.transition="all 2s";
+				oUl.style.webkitTransition="all 2s";
+			}
+			//移除过渡的效果
+			var removeTransition=function(){
+				oUl.style.transition="none";
+				oUl.style.webkitTransition="none";
+			}
+			//平移
+			var setTranslateX=function(iw){
+				oUl.style.transform="translateX("+iw+"px)";
+				oUl.style.webkitTransform="translateX("+iw+"px)";
+			}
+			//自动轮播
+			var timer1=setInterval(function(){
+				pointMove();
+				index++;
+				addTransition();
+				//平移
+				setTranslateX(-index*oneSize);
+			},3000);
+			//监控oUl的过渡结束事件
+			oUl.addEventListener("transitionEnd",function(){
+				//每次过渡结束都判断显示的几个li
+				if (index>=9){
+					//如果是最后一张图片  移除运动的过渡效果  直接转到第一张图片
+					index=1;
+					removeTransition();
+					setTranslateX(-index*oneSize);
+				}else if (index<=0){
+					index=8;
+					removeTransition();
+					//index=1;
+					setTranslateX(-index*oneSize);
+				}
+				pointMove();
+			},"false");
+			//兼容低版本
+			oUl.addEventListener("webkitTransitionEnd",function(){
+				//每次过渡结束都判断显示的几个li
+				if (index>=9){
+					//如果是最后一张图片  移除运动的过渡效果  直接转到第一张图片
+					index=1;
+					removeTransition();
+					setTranslateX(-index*oneSize);
+				}else if (index<=0){
+					index=8;
+					removeTransition();
+					//index=1;
+					setTranslateX(-index*oneSize);
+				}
+				pointMove();
+			},"false");
+		
+		var pointMove=function(){
+			//清除所有点样式
+			for(var i=0;i<arrLi.length;i++){
+				arrLi[i].className="";
+			}
+			arrLi[index].className="act";
+		}
+
+		//初始值
+		var startX=0;
+		var moveX=0;
+		var disX=0;
+		var isMove=false;
+		//移动端拖动 touchstart touchmove touchend
+			oUl.addEventListener("touchstart",function(ev){
+				isMove=true;
+				var ev=ev||window.event;
+				clearInterval(timer1);
+				startX=ev.touches[0].clientX;
+				console.log(startX);
+			},"false");
+			oUl.addEventListener("touchmove",function(ev){
+				var ev=ev||window.event;
+				ev.preventDefault();
+				moveX=ev.touches[0].clientX;
+				disX=moveX-startX; //滑动的距离
+				removeTransition(); //移出原有的过渡
+				var currX=-index*oneSize+disX
+				setTranslateX(currX);
+			},"false");
+			oUl.addEventListener("touchend",function(ev){
+				//绝对值Math.abs();
+				if(isMove&&Math.abs(disX)>=oneSize/3){
+					//若滑动距离大，切换当前图片到下一张
+					if(disX<0){
+						index++;
+					}else{
+						index--;
+					}
+					addTransition();
+					setTranslateX(-index*oneSize);
+				}else{
+					//若滑动距离小，保持当前图片
+					addTransition();
+					setTranslateX(-index*oneSize);
+				}
+				//重置
+				startX=0;
+				moveX=0;
+				disX=0;
+				isMove=false;
+				clearInterval(timer1);
+				timer1=setInterval(function(){
+					pointMove();
+					index++;
+					addTransition();
+					//平移
+					setTranslateX(-index*oneSize);
+				},3000);
+
+			},"false");
+	}
+
+
+
+	var time=function(){
+	var str=10*60*60;  //十小时 的秒数
+	var num=document.querySelectorAll(".num")
+	var timer=null;
+		var timer=setInterval(function(){
+			str--;
+			var h=Math.floor(str/3600);  //整小时
+			var m=Math.floor(str/60%60)  //整分钟
+			var s=str%60;//整秒数
+			num[0].innerHTML=h>10? Math.floor(h/10):0;
+			num[1].innerHTML=h%10;
+			num[2].innerHTML=m>10? Math.floor(m/10):0;
+			num[3].innerHTML=m%10;
+			num[4].innerHTML=s>10? Math.floor(s/10):0;
+			num[5].innerHTML=s%10;
+
+			if(str<=0){
+				clearInterval(timer);
+			}
+		},1000)
+	}
+
+	/*banner  用css3实现*/
+
+	//登陆
+	var debark=function(){
+		var inner=document.querySelector('.debark');
+		var login=document.querySelector('.login');
+		if(getCookie('name')){
+			inner.innerHTML="<a>"+getCookie('name')+"</a><button id='btn'>退出</button>";	
+			login.innerHTML=getCookie('name');
+		}else{
+			inner.innerHTML="<a href='register.html'><img src='images/05.png'></a>";
+			login.innerHTML='登陆';
+		}
+		
+		if(document.querySelector('#btn')){
+			var btn=document.querySelector('#btn');
+			btn.ontouchstart=function(){
+					ajax('get','guestbook/index.php','m=index&a=logout',function(p){
+						var data=JSON.parse(p);
+						removeCookie('name');
+						inner.innerHTML="<a href='register.html'><img src='images/05.png'></a>";
+						login.innerHTML='登陆';
+					})
+			}
+		}
+		
+	} 
+
+	/*商品详情生成页面*/
+	ajax('get','jsonData/product.json','',function(a){
+		var data=JSON.parse(a);
+		for (var attr in data)
+		{
+			var list=data[attr]['list'];
+			var ul=document.querySelector('.commsdity_ul');
+			for (var attr1 in list)
+			{
+				ul.innerHTML+="<li><a class='s'>"+
+					"<img src="+list[attr1]['img']+"></a>"+
+					"<p class='commo_name'>"+list[attr1]['dic']+"</p>"+
+					"<p class='commo_price'>￥"+list[attr1]['price']+
+					"</p><p class='commo_p clear'>"+
+					"<span class='p'>好评率100%</span><a class='si' ip="+list[attr1]['pid']+">加入购物车</a></p></li>";
+			}
+		}
+		window.localStorage.clear();
+		var allList=document.querySelectorAll('.commsdity_ul a');
+		console.log(allList);
+		var allNum=window.localStorage.getItem('allCount')||0;
+		//获取商品  设置点击事件
+		for (var i=0;i<allList.length ;i++ )
+		{
+			allList[i].addEventListener('touchstart',function(){
+				var mark=this.getAttribute('ip');
+				var num=window.localStorage.getItem('name'+mark+'num')||0;
+				//把商品存下来  名称+数量
+				if(window.localStorage.getItem('name'+mark)){
+					//如果存在就只保存单个数量
+					window.localStorage.setItem('name'+mark+'num',++num);
+				}else{
+					//如果不存在就保存名称以及数量
+					window.localStorage.setItem('name'+mark,mark);
+					window.localStorage.setItem('name'+mark+'num',++num);
+				}
+				//可显示购物车总数量
+				window.localStorage.setItem('allCount',++allNum);
+			},false)
+		}
+	})
+
+

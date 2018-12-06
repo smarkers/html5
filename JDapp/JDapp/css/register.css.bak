@@ -1,0 +1,74 @@
+body{
+	background:#eee;
+}
+.head{
+	width:100%;
+	margin-bottom:10px;
+	border-top:1px solid #b6b4b6;
+	border-bottom:1px solid #b6b4b6;
+}
+.head .header_center{
+	width:100%;
+	height:44px;
+	position:relative;
+}
+.head .header_center a{
+	display:block;
+	width:12px;
+	height:20px;
+	background:url('../images/sprites.png') no-repeat -25px 0;
+	background-size:200px 200px;
+	position:absolute;
+	left:27px;
+	top:12px;
+}
+.head .header_center p{
+	width:100%;
+	height:44px;
+	padding-left:32px;
+	text-align:center;
+	line-height:44px;
+	color:#616161;
+	font-size:16px;
+}
+.reg_box{
+	width:50%;
+	margin:0 auto;
+}
+.reg_box div{
+	width:100%;
+	height:46px;
+	position:relative;
+	margin-bottom:20px;
+	line-height:46px;
+}
+.reg_box div:nth-child(1){
+	margin-bottom:0px;
+}
+.reg_box div label{
+	position:absolute;
+	text-indent:5px;
+	z-index:2;
+}
+.reg_box div input{
+	width:100%;
+	height:44px;
+	padding-left:72px;
+	z-index:1;
+	font-size:10px;
+	position:absolute;
+	top:0;
+	left:0;
+}
+.reg_box div input[name='btn']{
+	width:100%;
+	height:46px;
+	background:red;
+	color:#fff;
+	padding:0;
+}
+.reg_box p{
+	height:25px;
+	line-height:25px;
+	text-indent:10px;
+}

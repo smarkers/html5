@@ -1,0 +1,294 @@
+	.jd_top{
+		width:100%;
+		height:45px;
+		background:url('../images/header-bg.png') repeat-x;
+		background-size:1px 44px;
+		border-bottom:1px solid #e0e0e0;
+		position:relative;
+	}
+	.icon_back{
+		float:left;
+		display:block;
+		width:12px;
+		height:20px;
+		background:url('../images/sprites.png') no-repeat -25px 0;
+		background-size:200px 200px;
+		position:absolute;
+		top:12px;
+		left:14px;
+		z-index:2;
+	}
+	.jd_top h2{
+		width:100%;
+		height:44px;
+		line-height:44px;
+		text-align:center;
+		padding:0 30px;
+		font-size:15px;
+		position:absolute;
+		top:0;
+		left:0;
+		z-index:1;
+	}
+	.icon_menu{
+		width:20px;
+		height:20px;
+		float:right;
+		background:url('../images/sprites.png') no-repeat -60px -1px;
+		background-size:200px 200px;
+		position:absolute;
+		top:12px;
+		right:10px;
+		z-index:2;
+	}
+	/*提示安全*/
+	/* 提示 */
+	.jd_view{
+		width:100%;
+		/* padding-top:45px; */
+	}
+	.jd_safe{
+		width:100%;
+		height:35px;
+		border-bottom:1px solid #e0e0e0;
+	}
+	.jd_safe p{
+		width:240px;
+		height:35px;
+		text-align:center;
+		line-height:34px;
+		font-size:12px;
+		margin: auto;
+		border-bottom:1px solid #e0e0e0;
+	}
+	.jd_safe p:before{
+		content:"";
+		display:block;
+		width:18px;
+		height:20px;
+		background:url("../images/safe_icon.png") no-repeat;
+		background-size:18px 18px;
+		float:left;
+		margin-top:8px;
+	}
+	/*自营*/
+	.jd_shop{
+		width:100%;
+		margin-top:10px;
+	}
+	.shop_name{
+		width:100%;
+		height:36px;
+		border:1px solid #e0e0e0;
+		position:relative;
+		z-index: 200;
+	}
+	.shop_check{
+		width:18px;
+		height:18px;
+		margin:9px 0 0 9px;
+	}
+	.shop_check_box{
+		width:18px;
+		height:18px;
+		display:block;
+		background:url('../images/shop-icon.png') no-repeat 0 0;
+		background-size:50px 100px;
+	}
+
+	.shop_check_box[checked]{
+		background-position: -25px 0;
+	}
+	.shop_title{
+		width:100%;
+		padding-left:40px;
+		padding-right:10px;
+		position:absolute;
+		left:0;
+		top:0;
+	}
+	.shop_title .buy_logo{
+		width:14px;
+		height:14px;
+		margin-top:10px;
+		display:block;
+		float:left;
+	}
+	.shop_title .name{
+		float:left;
+		margin-top:8px;
+	}
+	.shop_title .discounts{
+		float:right;
+		margin-top:8px;
+		color:#f15353;
+		font-size:11px;
+	}
+	/*商品详情*/
+	.shop_product{
+		width:100%;
+		border-top:1px solid #e0e0e0;
+	}
+	.shop_product ul li{
+		width:100%;
+		position:relative;
+	}
+	.shop_product .shop_check{
+		width:18px;
+		height:18px;
+		margin:9px 0 0 9px;
+		position:absolute;
+		left:0;
+		top:0;
+		z-index: 200;
+	}
+	.shop_info{
+		width:100%;
+		padding-left:40px;
+		position:absolute;
+		top:0;
+		left:0;
+		padding-top:10px;
+		z-index: 100;
+	}
+	.shop_info .shop_pic{
+		float:left;
+		width:80px;
+		height:80px;
+		display:block;
+		margin-right:10px;
+		border:1px solid #e0e0e0;
+	}
+	.shop_info .shop_pic img{
+		width:78px;
+		height:78px;
+		display:block;
+		margin-right:10px;
+	}
+	.shop_info .info_right{
+		height:80px;
+	}
+	.shop_info .info_right .info_text{
+		font-size:13px;
+		height:30px;
+		line-height:15px;
+		white-space:nowrap;
+		overflow:hidden;
+		text-overflow:ellipsis;
+	}
+	.num_box{
+		margin-top:7px;
+	}
+	.changeNum{
+		float:left;
+		width:96px;
+		height:24px;
+		border:1px solid #e0e0e0;
+	}
+	.changeNum span{
+		width:30px;
+		height:22px;
+		float:left;
+		display:block;
+		text-align:center;
+	}
+	.changeNum input{
+		width:30px;
+		height:22px;
+		padding-left:10px;
+		float:left;
+		border-left:1px solid #e0e0e0;
+		border-right:1px solid #e0e0e0;
+	}
+	.remove{
+		float:right;
+		width:20px;
+		height:20px;
+		margin-right:15px;
+	}
+
+
+/* 选择 */
+	.jd_check_box{
+		height: 20px;
+		width: 20px;
+		display: block;
+
+		background: url("../images/shop-icon.png") no-repeat;
+		background-size: 50px 100px;
+	}
+	.jd_check_box[checked]{
+		background-position: -25px 0;
+	}
+
+
+
+	/*底部操作栏*/
+	.jd_option{
+		height: 57px;
+		width: 100%;
+		position: fixed;
+		bottom:0;
+		left: 0;
+
+		background: rgba(0,0,0,0.8);
+		color: #fff;
+		z-index: 999;
+	}
+	/*左侧  按钮*/
+	.jd_option .option_check{
+		width: 60px;
+		height: 57px;
+		line-height: 57px;
+
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 200;
+	}
+
+	.jd_option .option_check .jd_check_box{
+		top: 20px;
+		left: 10px;
+		position: absolute;
+	}
+	.jd_option .option_check .jd_check_label{
+		margin-left: 35px;
+		font-size: 12px;
+	}
+
+	/*中间信息*/
+	.jd_option .option_info{
+		width: 100%;
+		padding: 0 70px 0 70px;
+		height: 57px;
+		z-index: 199;
+	}
+	.jd_option .option_info .amount{
+		font-size: 16px;
+		line-height: 32px;
+	}
+	.jd_option .option_info .amount_dec{
+		font-size: 10px;
+		opacity: 0.8;
+	}
+
+	/*右侧按钮*/
+	.jd_option .option_submit{
+		width: 116px;
+		height: 57px;
+		line-height: 57px;
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 200;
+		background: #f15353;
+		text-align: center;
+	}
+	.jd_option .option_submit a{
+		color: #fff;
+		font-size: 18px;
+	}
+	.jd_option .option_submit a span{
+		font-size: 12px;
+	}
